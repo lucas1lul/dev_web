@@ -1,11 +1,5 @@
 
 # SystemToDo
-
-Uma breve descrição sobre o que esse projeto faz e para quem ele é
-
-
-Aqui está um modelo de README para o seu projeto SystemToDo no mesmo formato:
-
 SystemToDo 🗂️
 
 O SystemToDo é um aplicativo para gerenciar tarefas do dia a dia de forma eficiente e organizada. Desenvolvido em Java com o framework Spring Boot, o SystemToDo permite que usuários criem, editem e acompanhem suas tarefas pessoais. Com uma interface simples e intuitiva, ele é ideal para quem deseja otimizar a produtividade e manter um registro de suas atividades.
