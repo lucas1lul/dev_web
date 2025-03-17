@@ -5,18 +5,28 @@ import java.util.Objects;
 import jakarta.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED) // <- Move a estratégia para a raiz da hierarquia
+@Inheritance(strategy = InheritanceType.JOINED) // Estratégia correta de herança
 public class Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    private String email;
-    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;  // Alterado para Long para evitar erro no repositório
+
     private String nome;
+    private String email;
     private String senha;
 
     public Pessoa() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -44,7 +54,7 @@ public class Pessoa implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(email);
+        return Objects.hash(id);
     }
 
     @Override
@@ -52,6 +62,6 @@ public class Pessoa implements Serializable {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Pessoa other = (Pessoa) obj;
-        return Objects.equals(email, other.email);
+        return Objects.equals(id, other.id);
     }
 }
