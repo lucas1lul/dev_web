@@ -1,4 +1,5 @@
 package br.edu.iff.ccc.bsi.webdev.service;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -28,14 +29,19 @@ class OperadorServiceTest {
 
     @Test
     void testFindById() {
+        // 1. Cria um operador de teste
         Operador operador = new Operador();
-        String operadorId = "123";
+        operador.setId(1L); // ID agora é Long
         
-        when(operadorRepository.findById(operadorId)).thenReturn(Optional.of(operador));
+        // 2. Configura o mock para retornar o operador quando buscar pelo ID 1L
+        when(operadorRepository.findById(1L)).thenReturn(Optional.of(operador));
 
-        Operador result = operadorService.findById(operadorId).orElse(null);
+        // 3. Chama o método a ser testado
+        Optional<Operador> result = operadorService.findById(1L);
 
-        assertNotNull(result);
-        verify(operadorRepository).findById(operadorId);
+        // 4. Verificações
+        assertTrue(result.isPresent()); // Verifica se o Optional contém um valor
+        assertEquals(operador, result.get()); // Verifica se o operador retornado é o mesmo
+        verify(operadorRepository).findById(1L); // Verifica se o método do repositório foi chamado
     }
 }

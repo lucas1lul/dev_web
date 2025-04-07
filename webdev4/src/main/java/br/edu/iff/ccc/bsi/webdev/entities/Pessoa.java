@@ -5,21 +5,34 @@ import java.util.Objects;
 import jakarta.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED) // Estratégia correta de herança
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  // Alterado para Long para evitar erro no repositório
+    private Long id;
 
+    @Column(nullable = false)
     private String nome;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false)
     private String senha;
 
+    // Construtores
     public Pessoa() {}
 
+    public Pessoa(String nome, String email, String senha) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+    }
+
+    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -52,16 +65,27 @@ public class Pessoa implements Serializable {
         this.senha = senha;
     }
 
+    // equals e hashCode
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pessoa pessoa = (Pessoa) o;
+        return Objects.equals(id, pessoa.id);
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(id);
     }
 
+    // toString
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Pessoa other = (Pessoa) obj;
-        return Objects.equals(id, other.id);
+    public String toString() {
+        return "Pessoa{" +
+               "id=" + id +
+               ", nome='" + nome + '\'' +
+               ", email='" + email + '\'' +
+               '}';
     }
 }
