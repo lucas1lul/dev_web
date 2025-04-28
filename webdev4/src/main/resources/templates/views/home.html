@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${pageTitle}">Home - SystemToDo</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<body>
+    <div layout:fragment="content">
+        <h1>Bem-vindo ao SystemToDo WebDev</h1>
+        <p class="lead">Sistema de gerenciamento de calendário</p>
+        <div class="actions">
+            <a th:href="@{/login}" class="btn primary">Login</a>
+            <a th:href="@{/cadastro}" class="btn secondary">Cadastre-se</a>
+        </div>
+    </div>
+</body>
+</html>
