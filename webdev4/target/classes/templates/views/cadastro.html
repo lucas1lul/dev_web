@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org/"
+      th:replace="~{layouts/base :: layout(~{::title}, ~{::section})}">
+<head>
+    <title>Cadastro - SystemToDo WebDev</title>
+</head>
+<body>
+    <section class="auth-form">
+        <h1>📝 Criar nova conta</h1>
+
+        <form th:action="@{/cadastro}" method="post">
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirme sua senha</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+
+            <button type="submit" class="btn primary">Cadastrar</button>
+        </form>
+
+        <p class="login-link">
+            Já tem conta? <a th:href="@{/login}">Faça login</a>
+        </p>
+    </section>
+</body>
+</html>

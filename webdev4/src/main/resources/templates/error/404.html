@@ -1,0 +1,12 @@
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/base :: layout(~{::content}, 'Página Não Encontrada')}">
+<body>
+    <div th:fragment="content">
+        <div class="text-center mt-5">
+            <h1 class="display-1 text-danger">404</h1>
+            <p class="lead">Página não encontrada</p>
+            <p>A página que você está procurando pode ter sido removida ou não está disponível.</p>
+            <a href="/home" class="btn btn-primary">Voltar para Home</a>
+        </div>
+    </div>
+</body>
+</html>
